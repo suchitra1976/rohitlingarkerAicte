@@ -10,7 +10,7 @@ function initial(){
         table_content.innerHTML=localStorage['tableData'];
         
     }else{
-        localStorage.setItem('tableData',"");
+        localStorage.setItem('tableData',"<tr><th>Name</th><th>Email</th><th>Password</th><th>Dob</th><th>Accepted terms</th></tr>");
     }
 }
 
@@ -49,6 +49,15 @@ if (age>=18 && age<=55){
     
 }
 
+function checkDOB(dob){
+    let age = new Date().getFullYear() - new Date(dob.value).getFullYear();
+    if(age < 18 || age>55){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 function updateTable(filtered_data){
     let table_content=document.getElementById('table_body');
     table_content.innerHTML+=filtered_data;
@@ -61,23 +70,24 @@ function onSubmit(event){
 let nam=document.getElementById('name').value.toString() ;
 const email=document.getElementById('email').value.toString();
 let password=document.getElementById('password').value.toString();
-let dob=document.getElementById('dob').value.toString();
+let dob1=document.getElementById('dob');
 
 
 if (document.getElementById('email').checkValidity()){
 
-if (validateDob(dob)){
+if (checkDOB(dob1)){
 
-
+let dob=dob1.value.toString();
 let accepted_terms=document.getElementsByName('accepted_terms')[0].checked.toString();
 let combined=[nam,email,password,dob,accepted_terms]
 let filtered_data='<tr><td>'+combined.join('</td><td>')+'</td></tr>'
 console.log(filtered_data);
 updateTable(filtered_data);
 }else{
-    alert('age shld be btwn 18-55');
+    alert('age should be between 18 and 55');
 }
 }else{
+    //event.preventDefault();
     alert('Not a valid email');
 }
 
