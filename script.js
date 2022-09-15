@@ -3,20 +3,14 @@
 document.getElementById('submitButton').addEventListener('click',onSubmit);
 
 
-function yesNo(bol){
-    if (bol){
-        return 'Yes';
-    }else{
-        return 'No';
-    }
-}
+
 function initial(){
     if (localStorage['tableData']){
         table_content=document.getElementById('table_body');
         table_content.innerHTML=localStorage['tableData'];
         
     }else{
-        localStorage.setItem('tableData','');
+        localStorage.setItem('tableData',"<tr><th>Name</th><th>Email</th><th>Password</th><th>Dob</th><th>Accepted terms</th></tr>");
     }
 }
 
@@ -48,28 +42,12 @@ if (bm<tm){
 if (age>=18 && age<=55){
     return true;
 }else{
+    
     return false;
 }
     
     
 }
-function ValidateEmail(inputText)
-{
-var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-if(inputText.value.match(mailformat))
-{
-
-return true;
-}
-else
-{
-alert("You have entered an invalid email address!");
-
-return false;
-}
-}
-
-
 
 function updateTable(filtered_data){
     let table_content=document.getElementById('table_body');
@@ -81,23 +59,28 @@ function updateTable(filtered_data){
 function onSubmit(event){
 //event.preventDefault();
 let nam=document.getElementById('name').value.toString() ;
-let email=document.getElementById('email').value.toString();
+const email=document.getElementById('email').value.toString();
 let password=document.getElementById('password').value.toString();
 let dob=document.getElementById('dob').value.toString();
 
 
-if ValidateEmail(email){
+if (document.getElementById('email').checkValidity()){
 
 if (validateDob(dob)){
 
 
-let accepted_terms=yesNo(document.getElementsByName('accepted_terms')[0].checked);
+let accepted_terms=document.getElementsByName('accepted_terms')[0].checked.toString();
 let combined=[nam,email,password,dob,accepted_terms]
 let filtered_data='<tr><td>'+combined.join('</td><td>')+'</td></tr>'
 console.log(filtered_data);
 updateTable(filtered_data);
+}else{
+    alert('age shld be btwn 18-55');
 }
+}else{
+    alert('Not a valid email');
 }
+
 }
 
 window.initial();
