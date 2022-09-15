@@ -66,7 +66,7 @@ function updateTable(filtered_data){
 }
 
 function onSubmit(event){
-//event.preventDefault();
+event.preventDefault();
 let nam=document.getElementById('name').value.toString() ;
 const email=document.getElementById('email').value.toString();
 let password=document.getElementById('password').value.toString();
