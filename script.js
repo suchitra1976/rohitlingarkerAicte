@@ -54,6 +54,8 @@ if (age>=18 && age<=55){
     
 }
 
+
+
 function updateTable(filtered_data){
     let table_content=document.getElementById('table_body');
     table_content.innerHTML+=filtered_data;
@@ -62,7 +64,7 @@ function updateTable(filtered_data){
 }
 
 function onSubmit(event){
-event.preventDefault();
+//event.preventDefault();
 let nam=document.getElementById('name').value.toString() ;
 let email=document.getElementById('email').value.toString();
 let password=document.getElementById('password').value.toString();
