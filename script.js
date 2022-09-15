@@ -87,8 +87,9 @@ updateTable(filtered_data);
     alert('age should be between 18 and 55');
 }
 }else{
-    //event.preventDefault();
+    
     alert('Not a valid email');
+    //event.preventDefault();
 }
 
 }
