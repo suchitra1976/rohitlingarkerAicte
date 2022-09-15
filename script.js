@@ -8,6 +8,7 @@ function initial(){
     if (localStorage['tableData']){
         table_content=document.getElementById('table_body');
         table_content.innerHTML=localStorage['tableData'];
+        console.log(table_content);
         
     }else{
         localStorage.setItem('tableData',"");
