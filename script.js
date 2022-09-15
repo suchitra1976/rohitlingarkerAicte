@@ -53,6 +53,21 @@ if (age>=18 && age<=55){
     
     
 }
+function ValidateEmail(inputText)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(inputText.value.match(mailformat))
+{
+
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+
+return false;
+}
+}
 
 
 
@@ -71,7 +86,7 @@ let password=document.getElementById('password').value.toString();
 let dob=document.getElementById('dob').value.toString();
 
 
-
+if ValidateEmail(email){
 
 if (validateDob(dob)){
 
@@ -81,6 +96,7 @@ let combined=[nam,email,password,dob,accepted_terms]
 let filtered_data='<tr><td>'+combined.join('</td><td>')+'</td></tr>'
 console.log(filtered_data);
 updateTable(filtered_data);
+}
 }
 }
 
