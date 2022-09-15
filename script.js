@@ -10,7 +10,7 @@ function initial(){
         table_content.innerHTML=localStorage['tableData'];
         
     }else{
-        localStorage.setItem('tableData',"<tr><th>Name</th><th>Email</th><th>Password</th><th>Dob</th><th>Accepted terms</th></tr>");
+        localStorage.setItem('tableData',"");
     }
 }
 
